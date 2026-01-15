@@ -59,7 +59,7 @@ const Navbar = () => {
                 ))}
             </ul>
         </div>
-        <a href="public/Sandeep_Resume.pdf" className="text-white font-bold bg-purple-500 px-4 py-2 rounded-lg hover:bg-purple-900">Download Cv</a>
+        <a href="https://drive.google.com/file/d/19MMqICNn1XN7VvJFFYbeEaR2OWGFz_iZ/view?usp=drive_link" download className="text-white font-bold bg-purple-500 px-4 py-2 rounded-lg hover:bg-purple-900">Download Cv</a>
         </motion.div>
 
         <div className="flex md:hidden justify-between">
