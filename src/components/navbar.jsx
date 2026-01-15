@@ -59,12 +59,12 @@ const Navbar = () => {
                 ))}
             </ul>
         </div>
-        <button onClick={()=>window.open("public/Sandeep_Resume.pdf")} className="text-white font-bold bg-purple-500 px-4 py-2 rounded-lg hover:bg-purple-900">Download Cv</button>
+        <a href="public/Sandeep_Resume.pdf" className="text-white font-bold bg-purple-500 px-4 py-2 rounded-lg hover:bg-purple-900">Download Cv</a>
         </motion.div>
 
         <div className="flex md:hidden justify-between">
             <motion.div
-            animate={menu? "open":"closed"}
+            animate={menu ? "open":"closed"}
             >
                 <motion.div
                 variants={variants}
