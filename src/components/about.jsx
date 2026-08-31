@@ -4,68 +4,136 @@ import { useInView } from "react-intersection-observer"
 
 export default function About() {
 
-    const{ref,inView} = useInView ({
-        triggerOnce :true,
-        threshold:0.1,
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
     })
 
-  return (
-    <div id="about" className="text-white py-16">
-    <div className="container mx-auto px-4 text-container">
-        <motion.h2 
-        ref={ref}
-        initial={{opacity:0, y:100}}
-        animate={inView ? {opacity:1, y:0}:{}}
-        transition={{delay:0.1 , duration:0.5}}
-        className="text-3xl md:text-4xl font-bold mb-8 underline text-center">About Me
-        </motion.h2>
-        <motion.p 
-        ref={ref}
-        initial={{opacity:0 , y:100}}
-        animate={inView ? {opacity:1 ,y:0}:{}}
-        transition={{delay:0.2, duration:0.5}}
-        className="mb-12 text-gray-400 text-center py-16 px-8 gap-10"> My journey into data analytics began with a love for exploring numbers and understanding trends. Over time,I have developed hands-on skills in data cleaning , vizualization and analysis. I am Currently working on projects like Sales Dashboards and Customer Behavior Analysis to sharpen my analytical and visualization abilities. My goal is to become a skilled data analyst who helps businesses make smart , data-driven decisions. </motion.p>
-    <div className="flex flex-col md:flex-row justify-center items-center">
-        <motion.div 
-        ref={ref}
-        initial={{opacity:0, x:-100}}
-        animate={inView ? {opacity:1, x:0}:{}}
-        transition={{delay:0.3 , duration:0.5}}
-        className="mb-8 md:mb-0 md:mr-8 flex justify-center">
-            <img src={mypic} 
-             className="w-24 sm:w-32 md:w-50"/>
-        </motion.div>
-        <motion.p 
-        ref={ref}
-        initial={{opacity:0 , x:100}}
-        animate={inView ? {opacity:1 ,x:0}:{}}
-        transition={{delay:0.4, duration:0.5}}
-        className=" md:1/2 text-gray-400 md:px-0 text-base sm:text-lg md:text-xl py-16 px-8 gap-10 items-center">
-            Hey there ! I am <span className="text-white font-semibold">Sandeep Das </span>, a passionate data analyst in the making and a BCA student at Dibrugarh University (Batch 2023-2026). I enjoy working with data, discovering raw numbers into meaningful insights using tools like Excel, SQL, Python and Power BI.
-        </motion.p>
-    </div>
+    const stats = [
+        { value: "5+", label: "Projects Built" },
+        { value: "2+", label: "Years of Learning" },
+        { value: "3+", label: "Freelance Clients" },
+    ]
 
-    <motion.div 
-        ref={ref}
-        initial={{opacity:0 }}
-        animate={inView ? {opacity:1}:{}}
-        transition={{delay:0.5, duration:0.5}}
-    className="flex flex-col sm:flex-row justify-around items-center mt-12 space-y-6 sm:space-y-0">
-        <div className="text-center">
-            <h3 className="text-3xl md:text-size:3xl font-bold md:my-6 text-purple-500">7+</h3>
-            <p className="text-sm sm:texttext-base text-gray-300">Data Sets Analyzed</p>
-        </div>
-        <div>
-            <h3 
-            className="text-3xl md:text-size:3xl font-bold md:my-6 text-purple-500">5+</h3>
-            <p className="text-sm sm:texttext-base text-gray-300">Projects Completed</p>
-        </div>
-        <div>
-            <h3 className="text-3xl md:text-size:3xl font-bold md:my-6 text-purple-500">2+</h3>
-            <p className="text-sm sm:texttext-base text-gray-300">Years of Learning Experience</p>
-        </div>
-    </motion.div>
-    </div>
-    </div>
-  )
+    const highlights = [
+        { icon: "Web Dev. Skills", text: "Full-stack apps with PHP, MySQL & React" },
+        { icon: "Data Anal. Skills", text: "Data dashboards with Power BI & Excel" },
+        { icon: "College", text: "BCA @ Dibrugarh University, 2026" },
+        { icon: "Location", text: "Based in Dibrugarh, Assam" },
+    ]
+
+    return (
+        <motion.div ref={ref}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 0.1, duration: 0.5 }} id="about" className="text-white py-20">
+            <div className="container mx-auto px-4 max-w-6xl">
+
+                {/* ── Section heading ── */}
+                <motion.div
+                    ref={ref}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 0.1, duration: 0.5 }}
+                    className="text-center mb-16"
+                >
+                    <h2
+                        className="text-4xl md:text-5xl font-extrabold mb-3"
+                        style={{ fontFamily: "'Syne', sans-serif" }}
+                    >
+                        About <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Me</span>
+                    </h2>
+                    <div className="flex items-center justify-center gap-3 mt-2">
+                        <span className="h-px w-12 bg-purple-500/50" />
+                        <span className="text-gray-500 text-sm font-mono">who I am</span>
+                        <span className="h-px w-12 bg-purple-500/50" />
+                    </div>
+                </motion.div>
+
+                {/* ── Main content: image + text ── */}
+                <div className="flex flex-col md:flex-row items-center gap-12 mb-16">
+
+                    {/* Photo */}
+                    <motion.div
+                        ref={ref}
+                        initial={{ opacity: 0, x: -60 }}
+                        animate={inView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ delay: 0.2, duration: 0.5 }}
+                        className="flex-shrink-0 flex justify-center"
+                    >
+                        <div className="relative">
+                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/30 to-blue-500/20 blur-2xl scale-110" />
+                            <img
+                                src={mypic}
+                                alt="Sandeep Das"
+                                className="relative z-10 w-44 sm:w-52 md:w-60 rounded-2xl object-cover drop-shadow-xl"
+                            />
+                        </div>
+                    </motion.div>
+
+                    {/* Text */}
+                    <motion.div
+                        ref={ref}
+                        initial={{ opacity: 0, x: 60 }}
+                        animate={inView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                        className="flex-1"
+                        style={{ fontFamily: "'DM Sans', sans-serif" }}
+                    >
+                        <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                            Hey there! I'm{" "}
+                            <span className="text-white font-semibold">Sandeep Das</span>, a
+                            Web Developer and BCA graduate from Dibrugarh University (Batch 2023–2026).
+                            I build full-stack web applications — from grocery delivery platforms to
+                            client business websites — with a focus on clean UI, smooth UX, and
+                            real-world functionality.
+                        </p>
+                        <p className="text-gray-400 text-base leading-relaxed mb-8">
+                            Beyond web dev, I have hands-on experience with data analysis using
+                            SQL, Excel, and Power BI — a skill that helps me build smarter,
+                            data-informed products. I'm actively looking for web developer
+                            roles where I can grow, contribute, and ship things that matter.
+                        </p>
+
+                        {/* Quick highlights */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            {highlights.map((item, i) => (
+                                <div
+                                    key={i}
+                                    className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl px-4 py-3"
+                                >
+                                    <span className="material-icons-round text-purple-400 font-bold">
+                                        {item.icon}
+                                    </span>
+                                    <span className="text-gray-300 text-sm">{item.text}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* ── Stats row ── */}
+                <motion.div
+                    ref={ref}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 0.5, duration: 0.5 }}
+                    className="grid grid-cols-3 divide-x divide-white/10 bg-white/5 border border-white/10 rounded-2xl overflow-hidden"
+                >
+                    {stats.map((stat, i) => (
+                        <div key={i} className="text-center py-8 px-4">
+                            <h3
+                                className="text-3xl md:text-4xl font-extrabold text-purple-400 mb-1"
+                                style={{ fontFamily: "'Syne', sans-serif" }}
+                            >
+                                {stat.value}
+                            </h3>
+                            <p className="text-gray-400 text-sm">{stat.label}</p>
+                        </div>
+                    ))}
+                </motion.div>
+
+            </div>
+        </motion.div>
+    )
 }
